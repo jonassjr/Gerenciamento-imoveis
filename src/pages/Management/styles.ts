@@ -36,3 +36,74 @@ export const Header = styled.header`
     }
   }
 `
+export const ManagementTable = styled.table`
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+  margin-top: 1.5rem;
+
+  tr {
+    &:hover td {
+      background-color: ${(props) => props.theme['gray-100']};
+      color: ${(props) => props.theme['gray-500']};
+      transition: background-color ease-in-out 0.2s;
+    }
+
+    &:nth-child(2n) {
+      td {
+        background-color: ${(props) => props.theme['gray-500']};
+      }
+
+      &:hover td {
+        background-color: ${(props) => props.theme['gray-100']};
+        transition: background-color ease-in-out 0.2s;
+      }
+    }
+  }
+
+  td {
+    padding: 1.25rem 2rem;
+    background-color: ${(props) => props.theme['gray-600']};
+
+    &:first-child {
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+
+    &:last-child {
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+
+    &:hover {
+      td {
+        background-color: ${(props) => props.theme['gray-100']};
+      }
+    }
+  }
+`
+
+const STATUS_COLORS = {
+  orange: 'orange-500',
+  green: 'green-500',
+  blue: 'blue-500',
+} as const
+
+interface StatusProps {
+  statusColor: keyof typeof STATUS_COLORS
+}
+
+export const Status = styled.span<StatusProps>`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &::before {
+    content: '';
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: ${(props) =>
+      props.theme[STATUS_COLORS[props.statusColor]]};
+  }
+`
