@@ -1,0 +1,25 @@
+{
+  "imoveis": [
+    {
+      "id": 1,
+      "adress": "Rua ABC, 123",
+      "type": "Casa",
+      "price": 300000,
+      "category": "Disponível"
+    },
+    {
+      "id": 2,
+      "adress": "Rua XYZ, 789",
+      "type": "Apartamento",
+      "price": 640000,
+      "category": "Alugado"
+    },
+    {
+      "id": 3,
+      "adress": "Av. FGH, 456",
+      "type": "Terreno",
+      "price": 420000,
+      "category": "Vendido"
+    }
+  ]
+}

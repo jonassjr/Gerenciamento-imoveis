@@ -43,21 +43,21 @@ export const ManagementTable = styled.table`
   margin-top: 1.5rem;
 
   tr {
-    &:hover td {
+    /* &:hover td {
       background-color: ${(props) => props.theme['gray-100']};
       color: ${(props) => props.theme['gray-500']};
       transition: background-color ease-in-out 0.2s;
-    }
+    } */
 
     &:nth-child(2n) {
       td {
         background-color: ${(props) => props.theme['gray-500']};
       }
 
-      &:hover td {
+      /* &:hover td {
         background-color: ${(props) => props.theme['gray-100']};
         transition: background-color ease-in-out 0.2s;
-      }
+      } */
     }
   }
 
@@ -75,18 +75,18 @@ export const ManagementTable = styled.table`
       border-bottom-right-radius: 3px;
     }
 
-    &:hover {
+    /* &:hover {
       td {
         background-color: ${(props) => props.theme['gray-100']};
       }
-    }
+    } */
   }
 `
 
 const STATUS_COLORS = {
-  orange: 'orange-500',
-  green: 'green-500',
-  blue: 'blue-500',
+  Alugado: 'orange-500',
+  Disponível: 'green-500',
+  Vendido: 'blue-500',
 } as const
 
 interface StatusProps {
