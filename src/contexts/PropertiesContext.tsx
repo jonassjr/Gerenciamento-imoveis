@@ -17,7 +17,7 @@ interface Propertie {
 
 interface PropertiesContextType {
   properties: Propertie[]
-  fetchProperties: () => Promise<void>
+  fetchProperties: (query?: string) => Promise<void>
 }
 
 interface PropertiesProviderProps {
@@ -29,8 +29,12 @@ export const PropertiesContext = createContext({} as PropertiesContextType)
 export function PropertiesProvider({ children }: PropertiesProviderProps) {
   const [properties, setProperties] = useState<Propertie[]>([])
 
-  const fetchProperties = useCallback(async () => {
-    const response = await api.get('imoveis')
+  const fetchProperties = useCallback(async (query?: string) => {
+    const response = await api.get('imoveis', {
+      params: {
+        q: query,
+      },
+    })
 
     setProperties(response.data)
   }, [])
