@@ -20,6 +20,13 @@
       "type": "Terreno",
       "price": 420000,
       "category": "Vendido"
+    },
+    {
+      "adress": "Rua AEIOU, 421",
+      "type": "Casa",
+      "price": 230000,
+      "category": "Disponível",
+      "id": 4
     }
   ]
 }
