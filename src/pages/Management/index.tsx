@@ -29,18 +29,18 @@ export function Management() {
 
       <ManagementTable>
         <tbody>
-          {properties.map((propertie) => (
-            <tr key={propertie.id}>
-              <td width="40%">{propertie.adress}</td>
-              <td>{propertie.type}</td>
-              <td>{priceFormatter.format(propertie.price)}</td>
+          {properties.map((property) => (
+            <tr key={property.id}>
+              <td width="40%">{property.adress}</td>
+              <td>{property.type}</td>
+              <td>{priceFormatter.format(property.price)}</td>
               <td>
-                <Status statusColor={propertie.category}>
-                  {propertie.category}
+                <Status statusColor={property.category}>
+                  {property.category}
                 </Status>
               </td>
               <td>
-                <MenuOptions />
+                <MenuOptions propertyId={property.id} />
               </td>
             </tr>
           ))}

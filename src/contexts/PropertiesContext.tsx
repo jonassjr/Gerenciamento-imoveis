@@ -7,7 +7,7 @@ import {
 } from 'react'
 import { api } from '../lib/axios'
 
-interface Propertie {
+interface Property {
   id: number
   adress: string
   type: 'Casa' | 'Apartamento' | 'Terreno'
@@ -23,9 +23,10 @@ interface CreatePropertieInput {
 }
 
 interface PropertiesContextType {
-  properties: Propertie[]
+  properties: Property[]
   fetchProperties: (query?: string) => Promise<void>
   createProperties: (data: CreatePropertieInput) => Promise<void>
+  deleteProperties: (id: number) => Promise<void>
 }
 
 interface PropertiesProviderProps {
@@ -35,7 +36,7 @@ interface PropertiesProviderProps {
 export const PropertiesContext = createContext({} as PropertiesContextType)
 
 export function PropertiesProvider({ children }: PropertiesProviderProps) {
-  const [properties, setProperties] = useState<Propertie[]>([])
+  const [properties, setProperties] = useState<Property[]>([])
 
   const fetchProperties = useCallback(async (query?: string) => {
     const response = await api.get('imoveis', {
@@ -59,13 +60,24 @@ export function PropertiesProvider({ children }: PropertiesProviderProps) {
     setProperties((state) => [response.data, ...state])
   }, [])
 
+  const deleteProperties = useCallback(async (id: number) => {
+    await api.delete(`imoveis/${id}`)
+
+    setProperties((state) => state.filter((property) => property.id !== id))
+  }, [])
+
   useEffect(() => {
     fetchProperties()
   }, [fetchProperties])
 
   return (
     <PropertiesContext.Provider
-      value={{ properties, fetchProperties, createProperties }}
+      value={{
+        properties,
+        fetchProperties,
+        createProperties,
+        deleteProperties,
+      }}
     >
       {children}
     </PropertiesContext.Provider>
