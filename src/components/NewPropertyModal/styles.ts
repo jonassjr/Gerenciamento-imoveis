@@ -81,7 +81,7 @@ export const CloseButton = styled(Dialog.Close)`
   color: ${(props) => props.theme['gray-100']};
 `
 
-export const PropertieCategory = styled(RadioGroup.Root)`
+export const PropertyCategory = styled(RadioGroup.Root)`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
@@ -89,7 +89,7 @@ export const PropertieCategory = styled(RadioGroup.Root)`
   margin-bottom: 0.5rem;
 `
 
-export const PropertieCategoryButton = styled(RadioGroup.Item)`
+export const PropertyCategoryButton = styled(RadioGroup.Item)`
   background-color: ${(props) => props.theme['gray-600']};
   padding: 1rem;
   border: 0;

@@ -57,11 +57,11 @@ export function DeleteModal({ propertyToDelete, onClose }: DeleteModalProps) {
           </p>
 
           <div>
-            <Button colorType="white" onClick={onClose}>
+            <Button $colorType="white" onClick={onClose}>
               Cancelar
             </Button>
             <Button
-              colorType="red"
+              $colorType="red"
               onClick={() => handleDeleteProperty(propertyToDelete)}
             >
               Deletar

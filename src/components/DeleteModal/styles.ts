@@ -52,7 +52,7 @@ const color = {
 } as const
 
 interface colorProps {
-  colorType: keyof typeof color
+  $colorType: keyof typeof color
 }
 
 export const Button = styled.button<colorProps>`
@@ -63,10 +63,10 @@ export const Button = styled.button<colorProps>`
   font-weight: bold;
   font-size: 0.875rem;
   color: ${(props) =>
-    props.colorType === 'red'
+    props.$colorType === 'red'
       ? props.theme['gray-100']
       : props.theme['gray-800']};
-  background-color: ${(props) => props.theme[color[props.colorType]]};
+  background-color: ${(props) => props.theme[color[props.$colorType]]};
   cursor: pointer;
 
   &:not(:disabled):hover {

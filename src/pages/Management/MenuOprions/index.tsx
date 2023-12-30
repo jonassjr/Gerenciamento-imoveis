@@ -5,11 +5,11 @@ import * as Dialog from '@radix-ui/react-dialog'
 
 import { MenuContent, MenuItem, TriggerButton } from './styles'
 
-import { DeleteModal } from '../DeleteModal/index'
-import { EditModal } from '../EditModel/idex'
+import { DeleteModal } from '../../../components/DeleteModal/index'
+import { EditModal } from '../../../components/EditModal/idex'
 
 import { useContext, useState } from 'react'
-import { PropertiesContext } from '../../contexts/PropertiesContext'
+import { PropertiesContext } from '../../../contexts/PropertiesContext'
 
 export function MenuOptions({ propertyId }: { propertyId: number }) {
   const { properties } = useContext(PropertiesContext)
@@ -34,6 +34,7 @@ export function MenuOptions({ propertyId }: { propertyId: number }) {
 
   const onClose = () => {
     setIsDeleteModalOpen(false)
+    setIsEditModalOpen(false)
   }
 
   return (
@@ -67,7 +68,9 @@ export function MenuOptions({ propertyId }: { propertyId: number }) {
         open={isEditModalOpen}
         onOpenChange={(isOpen) => setIsEditModalOpen(isOpen)}
       >
-        <EditModal />
+        {propertyGetById && (
+          <EditModal propertyToEdit={propertyGetById} onClose={onClose} />
+        )}
       </Dialog.Root>
     </>
   )

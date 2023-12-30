@@ -5,8 +5,8 @@ import { Header, ManagementTable, PageContainer, Status } from './styles'
 import { PropertiesContext } from '../../contexts/PropertiesContext'
 import { priceFormatter } from '../../utils/formatter'
 import * as Dialog from '@radix-ui/react-dialog'
-import { NewPropertieModal } from '../../components/NewPropertieModal/idex'
-import { MenuOptions } from '../../components/MenuOprions'
+import { NewPropertieModal } from '../../components/NewPropertyModal/idex'
+import { MenuOptions } from './MenuOprions'
 
 export function Management() {
   const { properties } = useContext(PropertiesContext)
@@ -35,9 +35,7 @@ export function Management() {
               <td>{property.type}</td>
               <td>{priceFormatter.format(property.price)}</td>
               <td>
-                <Status statusColor={property.category}>
-                  {property.category}
-                </Status>
+                <Status $status={property.category}>{property.category}</Status>
               </td>
               <td>
                 <MenuOptions propertyId={property.id} />

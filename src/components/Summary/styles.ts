@@ -14,7 +14,7 @@ const variantColors = {
 } as const
 
 interface VariantProps {
-  variant: keyof typeof variantColors
+  $variant: keyof typeof variantColors
 }
 
 export const SummaryCard = styled.article<VariantProps>`
@@ -37,5 +37,6 @@ export const SummaryCard = styled.article<VariantProps>`
     font-weight: 500;
   }
 
-  border-left: 3px solid ${(props) => props.theme[variantColors[props.variant]]};
+  border-left: 3px solid
+    ${(props) => props.theme[variantColors[props.$variant]]};
 `

@@ -7,15 +7,15 @@ export function Summary() {
 
   return (
     <SummaryContainer>
-      <SummaryCard variant="white">
+      <SummaryCard $variant="white">
         <header>Faturamento</header>
         <strong>{priceFormatter.format(summary.total)}</strong>
       </SummaryCard>
-      <SummaryCard variant="orange">
+      <SummaryCard $variant="orange">
         <header>Alugados</header>
         <strong>{priceFormatter.format(summary.alugado)}</strong>
       </SummaryCard>
-      <SummaryCard variant="blue">
+      <SummaryCard $variant="blue">
         <header>Vendidos</header>
         <strong>{priceFormatter.format(summary.vendido)}</strong>
       </SummaryCard>

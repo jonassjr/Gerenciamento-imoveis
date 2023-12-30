@@ -15,7 +15,7 @@ interface Property {
   category: 'Disponível' | 'Alugado' | 'Vendido'
 }
 
-interface CreatePropertieInput {
+interface CreatePropertyInput {
   adress: string
   type: 'Casa' | 'Apartamento' | 'Terreno'
   price: number
@@ -25,8 +25,9 @@ interface CreatePropertieInput {
 interface PropertiesContextType {
   properties: Property[]
   fetchProperties: (query?: string) => Promise<void>
-  createProperties: (data: CreatePropertieInput) => Promise<void>
+  createProperties: (data: CreatePropertyInput) => Promise<void>
   deleteProperties: (id: number) => Promise<void>
+  editProperties: (data: Property) => Promise<void>
 }
 
 interface PropertiesProviderProps {
@@ -38,6 +39,7 @@ export const PropertiesContext = createContext({} as PropertiesContextType)
 export function PropertiesProvider({ children }: PropertiesProviderProps) {
   const [properties, setProperties] = useState<Property[]>([])
 
+  // Read Properties
   const fetchProperties = useCallback(async (query?: string) => {
     const response = await api.get('imoveis', {
       params: {
@@ -48,7 +50,8 @@ export function PropertiesProvider({ children }: PropertiesProviderProps) {
     setProperties(response.data)
   }, [])
 
-  const createProperties = useCallback(async (data: CreatePropertieInput) => {
+  // Create Properties
+  const createProperties = useCallback(async (data: CreatePropertyInput) => {
     const { adress, type, price, category } = data
 
     const response = await api.post('imoveis', {
@@ -60,11 +63,29 @@ export function PropertiesProvider({ children }: PropertiesProviderProps) {
     setProperties((state) => [response.data, ...state])
   }, [])
 
+  // Delete Properties
   const deleteProperties = useCallback(async (id: number) => {
     await api.delete(`imoveis/${id}`)
 
     setProperties((state) => state.filter((property) => property.id !== id))
   }, [])
+
+  // Edit Properties
+  const editProperties = useCallback(
+    async (data: Property) => {
+      const { id, adress, type, price, category } = data
+
+      await api.put(`imoveis/${id}`, {
+        adress,
+        type,
+        price,
+        category,
+      })
+
+      fetchProperties()
+    },
+    [fetchProperties],
+  )
 
   useEffect(() => {
     fetchProperties()
@@ -77,6 +98,7 @@ export function PropertiesProvider({ children }: PropertiesProviderProps) {
         fetchProperties,
         createProperties,
         deleteProperties,
+        editProperties,
       }}
     >
       {children}

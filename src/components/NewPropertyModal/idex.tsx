@@ -4,8 +4,8 @@ import {
   Overlay,
   Content,
   CloseButton,
-  PropertieCategory,
-  PropertieCategoryButton,
+  PropertyCategory,
+  PropertyCategoryButton,
 } from './styles'
 
 import { X } from 'phosphor-react'
@@ -17,14 +17,14 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useContext } from 'react'
 import { PropertiesContext } from '../../contexts/PropertiesContext'
 
-const NewPropertiesFormSchema = z.object({
+const NewPropertyFormSchema = z.object({
   adress: z.string(),
   type: z.enum(['Casa', 'Apartamento', 'Terreno']),
   price: z.number(),
   category: z.enum(['Disponível', 'Alugado', 'Vendido']),
 })
 
-type NewPropertiesFormInputs = z.infer<typeof NewPropertiesFormSchema>
+type NewPropertyFormInputs = z.infer<typeof NewPropertyFormSchema>
 
 export function NewPropertieModal() {
   const { createProperties } = useContext(PropertiesContext)
@@ -35,16 +35,14 @@ export function NewPropertieModal() {
     register,
     reset,
     formState: { isSubmitting },
-  } = useForm<NewPropertiesFormInputs>({
-    resolver: zodResolver(NewPropertiesFormSchema),
+  } = useForm<NewPropertyFormInputs>({
+    resolver: zodResolver(NewPropertyFormSchema),
     defaultValues: {
       category: 'Disponível',
     },
   })
 
-  async function handleCreateNewPropertie(data: NewPropertiesFormInputs) {
-    console.log('handleCreateNewPropertie called')
-    console.log('Data:', data)
+  async function handleCreateNewProperty(data: NewPropertyFormInputs) {
     const { adress, type, price, category } = data
 
     await createProperties({
@@ -67,7 +65,7 @@ export function NewPropertieModal() {
           <X size={24} />
         </CloseButton>
 
-        <form onSubmit={handleSubmit(handleCreateNewPropertie)}>
+        <form onSubmit={handleSubmit(handleCreateNewProperty)}>
           <label htmlFor="adress">Endereço</label>
           <input
             id="adress"
@@ -80,20 +78,20 @@ export function NewPropertieModal() {
             name="type"
             render={({ field }) => {
               return (
-                <PropertieCategory
+                <PropertyCategory
                   onValueChange={field.onChange}
                   value={field.value}
                 >
-                  <PropertieCategoryButton value="Casa">
+                  <PropertyCategoryButton value="Casa">
                     Casa
-                  </PropertieCategoryButton>
-                  <PropertieCategoryButton value="Apartamento">
+                  </PropertyCategoryButton>
+                  <PropertyCategoryButton value="Apartamento">
                     Apartamento
-                  </PropertieCategoryButton>
-                  <PropertieCategoryButton value="Terreno">
+                  </PropertyCategoryButton>
+                  <PropertyCategoryButton value="Terreno">
                     Terreno
-                  </PropertieCategoryButton>
-                </PropertieCategory>
+                  </PropertyCategoryButton>
+                </PropertyCategory>
               )
             }}
           />
@@ -110,20 +108,20 @@ export function NewPropertieModal() {
             name="category"
             render={({ field }) => {
               return (
-                <PropertieCategory
+                <PropertyCategory
                   onValueChange={field.onChange}
                   value={field.value}
                 >
-                  <PropertieCategoryButton value="Disponível">
+                  <PropertyCategoryButton value="Disponível">
                     Disponível
-                  </PropertieCategoryButton>
-                  <PropertieCategoryButton value="Alugado">
+                  </PropertyCategoryButton>
+                  <PropertyCategoryButton value="Alugado">
                     Alugado
-                  </PropertieCategoryButton>
-                  <PropertieCategoryButton value="Vendido">
+                  </PropertyCategoryButton>
+                  <PropertyCategoryButton value="Vendido">
                     Vendido
-                  </PropertieCategoryButton>
-                </PropertieCategory>
+                  </PropertyCategoryButton>
+                </PropertyCategory>
               )
             }}
           />
