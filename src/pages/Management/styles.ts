@@ -8,6 +8,7 @@ export const PageContainer = styled.main`
 `
 
 export const Header = styled.header`
+  height: 6.25rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
