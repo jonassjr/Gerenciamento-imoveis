@@ -4,7 +4,13 @@ export const SummaryContainer = styled.div`
   margin-top: 2rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 3.25rem;
+  gap: 1rem;
+
+  overflow: auto;
+
+  @media screen and (min-width: 768px) {
+    gap: 3.25rem;
+  }
 `
 
 const variantColors = {
@@ -23,6 +29,7 @@ export const SummaryCard = styled.article<VariantProps>`
   row-gap: 3rem;
   padding: 2rem;
   border-radius: 3px;
+  min-width: 240px;
 
   background-color: ${(props) => props.theme['gray-500']};
   color: ${(props) => props.theme.white};
@@ -33,7 +40,7 @@ export const SummaryCard = styled.article<VariantProps>`
   }
 
   strong {
-    font-size: 1.75rem;
+    font-size: 1.25rem;
     font-weight: 500;
   }
 

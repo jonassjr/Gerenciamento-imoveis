@@ -34,7 +34,7 @@ export function SearchForm() {
       <input type="text" placeholder="Compo de busca" {...register('query')} />
       <button type="submit" disabled={isSubmitting}>
         <MagnifyingGlass size={24} />
-        Buscar
+        <span>Buscar</span>
       </button>
     </SearchFormContainer>
   )

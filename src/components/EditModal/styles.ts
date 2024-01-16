@@ -11,15 +11,16 @@ export const Overlay = styled(Dialog.Overlay)`
   background: rgba(0, 0, 0, 0.75);
 `
 export const Content = styled(Dialog.Content)`
-  min-width: 32rem;
-  border-radius: 6px;
+  width: 100%;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
   padding: 2.5rem 3rem;
   background-color: ${(props) => props.theme['gray-800']};
 
   position: fixed;
-  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  bottom: 0;
+  transform: translate(-50%);
 
   form {
     margin-top: 2rem;
@@ -38,10 +39,16 @@ export const Content = styled(Dialog.Content)`
       padding: 1rem;
       color: ${(props) => props.theme['gray-100']};
 
+      font-size: 0.875rem;
+
       background-color: ${(props) => props.theme['gray-900']};
 
       &::placeholder {
         color: ${(props) => props.theme['gray-500']};
+      }
+
+      @media screen and (min-width: 420px) {
+        font-size: 1rem;
       }
     }
 
@@ -67,22 +74,35 @@ export const Content = styled(Dialog.Content)`
       }
     }
   }
+
+  @media screen and (min-width: 520px) {
+    max-width: 32rem;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    bottom: initial;
+    border-radius: 6px;
+  }
 `
 
 export const PropertyCategory = styled(RadioGroup.Root)`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 0.5rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+
+  @media screen and (min-width: 420px) {
+    gap: 1rem;
+  }
 `
 
 export const PropertyCategoryButton = styled(RadioGroup.Item)`
   background-color: ${(props) => props.theme['gray-600']};
-  padding: 1rem;
+  padding: 0.75rem 0.65rem;
   border: 0;
   border-radius: 3px;
   cursor: pointer;
+  font-size: 0.75rem;
 
   color: ${(props) => props.theme.white};
 
@@ -94,6 +114,11 @@ export const PropertyCategoryButton = styled(RadioGroup.Item)`
 
   &[data-state='checked'] {
     background-color: ${(props) => props.theme['green-500']};
+  }
+
+  @media screen and (min-width: 420px) {
+    padding: 1rem;
+    font-size: 0.875rem;
   }
 `
 

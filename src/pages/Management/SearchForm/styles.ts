@@ -21,7 +21,7 @@ export const SearchFormContainer = styled.form`
   }
 
   button {
-    width: 9.5rem;
+    width: 3.5rem;
     height: 3.125rem;
     display: flex;
     justify-content: center;
@@ -47,6 +47,17 @@ export const SearchFormContainer = styled.form`
       color: ${(props) => props.theme['gray-800']};
 
       transition: background-color 0.1s;
+    }
+
+    span {
+      display: none;
+    }
+
+    @media screen and (min-width: 768px) {
+      width: 9.5rem;
+      span {
+        display: block;
+      }
     }
   }
 `

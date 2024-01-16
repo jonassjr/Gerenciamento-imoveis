@@ -1,39 +1,54 @@
 import { NavLink } from 'react-router-dom'
-import { Divider, MenuBar, Navigation } from './styles'
+import { Divider, Header, MenuBar, Navigation, SettingOptions } from './styles'
 import logo from '../../assets/Logo.svg'
-import { ChartLineUp, SignOut, Table, UserCircle } from 'phosphor-react'
+import { ChartLineUp, SignOut, Table, UserCircle, X } from 'phosphor-react'
+import { useContext } from 'react'
+import { SideBarContext } from '../../contexts/SidebarContext'
 
 export function SideBar() {
+  const { toggle, HandleSetToggle } = useContext(SideBarContext)
+
   return (
-    <MenuBar>
-      <img src={logo} alt="" width={127} height={38} />
+    <MenuBar toggle={toggle}>
+      <Header>
+        <img src={logo} alt="" width={127} height={38} />
+        <button onClick={HandleSetToggle}>
+          <X size={24} />
+        </button>
+      </Header>
+
       <Navigation>
         <ul>
-          <li>
-            <NavLink to={'/'}>
-              <Table size={32} />
-              Gerenciamento
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to={'/dashboard'}>
-              <ChartLineUp size={32} />
-              Dashboad
-            </NavLink>
-          </li>
-          <Divider />
-          <li>
-            <NavLink to={'/conta'}>
-              <UserCircle size={32} />
-              Conta
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to={'/sair'}>
-              <SignOut size={32} />
-              Sair
-            </NavLink>
-          </li>
+          <div>
+            <li>
+              <NavLink to={'/'}>
+                <Table size={32} />
+                Gerenciamento
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to={'/dashboard'}>
+                <ChartLineUp size={32} />
+                Dashboad
+              </NavLink>
+            </li>
+          </div>
+
+          <SettingOptions>
+            <Divider />
+            <li>
+              <NavLink to={'/conta'}>
+                <UserCircle size={32} />
+                Conta
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to={'/sair'}>
+                <SignOut size={32} />
+                Sair
+              </NavLink>
+            </li>
+          </SettingOptions>
         </ul>
       </Navigation>
     </MenuBar>

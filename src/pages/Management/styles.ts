@@ -5,6 +5,10 @@ export const PageContainer = styled.main`
   max-width: 1120px;
   margin: 0 auto;
   padding: 0 1.5rem;
+
+  div {
+    overflow-x: auto;
+  }
 `
 
 export const Header = styled.header`
@@ -16,33 +20,76 @@ export const Header = styled.header`
   border-bottom: 1px solid ${(props) => props.theme['light-gray']};
 
   h1 {
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 300;
+    display: none;
   }
 
-  button {
-    width: 9.5rem;
-    height: 3.125rem;
-    border-radius: 3px;
-
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    color: ${(props) => props.theme['gray-800']};
-    background-color: ${(props) => props.theme['gray-100']};
-
-    &:hover {
-      background-color: ${(props) => props.theme['gray-200']};
-      transition: background-color 0.3s;
+  @media screen and (min-width: 1120px) {
+    h1 {
+      display: block;
+      font-size: 32px;
     }
   }
 `
+
+export const MenuButton = styled.button`
+  background-color: transparent;
+  color: ${(props) => props.theme['gray-100']};
+  line-height: 0;
+
+  @media screen and (min-width: 1120px) {
+    display: none;
+  }
+`
+
+export const Registerbutton = styled.button`
+  width: 3.5rem;
+  height: 3.125rem;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    display: block;
+  }
+
+  span {
+    display: none;
+  }
+
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: ${(props) => props.theme['gray-800']};
+  background-color: ${(props) => props.theme['gray-100']};
+
+  &:hover {
+    background-color: ${(props) => props.theme['gray-200']};
+    transition: background-color 0.3s;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 9.5rem;
+
+    svg {
+      display: none;
+    }
+
+    span {
+      display: block;
+    }
+  }
+`
+
 export const ManagementTable = styled.table`
   width: 100%;
   border-collapse: separate;
   border-spacing: 0 0.5rem;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+  font-size: 0.875rem;
 
   tr {
     /* &:hover td {
@@ -50,6 +97,12 @@ export const ManagementTable = styled.table`
       color: ${(props) => props.theme['gray-500']};
       transition: background-color ease-in-out 0.2s;
     } */
+
+    td {
+      &:first-child {
+        min-width: 10rem;
+      }
+    }
 
     &:nth-child(2n) {
       td {
@@ -82,6 +135,10 @@ export const ManagementTable = styled.table`
         background-color: ${(props) => props.theme['gray-100']};
       }
     } */
+  }
+
+  @media screen and (min-width: 1024px) {
+    font-size: 1rem;
   }
 `
 
