@@ -1,11 +1,21 @@
 import { ThemeProvider } from 'styled-components'
 import { defaultTheme } from './styles/theme/default'
 import { GlobalStyle } from './styles/globals'
+import { BrowserRouter } from 'react-router-dom'
+import { Router } from './Router'
+import { PropertiesProvider } from './contexts/PropertiesContext'
+import { SideBarProvider } from './contexts/SidebarContext'
 
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <h1>Hello world</h1>
+      <PropertiesProvider>
+        <SideBarProvider>
+          <BrowserRouter>
+            <Router />
+          </BrowserRouter>
+        </SideBarProvider>
+      </PropertiesProvider>
       <GlobalStyle />
     </ThemeProvider>
   )
