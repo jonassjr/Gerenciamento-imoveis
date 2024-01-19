@@ -16,7 +16,6 @@ export function SideBarProvider({ children }: SideBarProviderProps) {
 
   const HandleSetToggle = () => {
     setToggle((prev) => !prev)
-    console.log(toggle)
   }
 
   return (

@@ -19,8 +19,8 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: ${(props) => props.theme['gray-500']}; 
-      border-radius: 3px; 
+      background-color: ${(props) => props.theme['gray-500']};
+      border-radius: 3px;
     }
   }
 

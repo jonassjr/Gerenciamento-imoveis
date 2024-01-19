@@ -9,7 +9,7 @@ export function SideBar() {
   const { toggle, HandleSetToggle } = useContext(SideBarContext)
 
   return (
-    <MenuBar toggle={toggle}>
+    <MenuBar $toggle={toggle}>
       <Header>
         <img src={logo} alt="" width={127} height={38} />
         <button onClick={HandleSetToggle}>
@@ -37,16 +37,16 @@ export function SideBar() {
           <SettingOptions>
             <Divider />
             <li>
-              <NavLink to={'/conta'}>
+              <a>
                 <UserCircle size={32} />
                 Conta
-              </NavLink>
+              </a>
             </li>
             <li>
-              <NavLink to={'/sair'}>
+              <a>
                 <SignOut size={32} />
                 Sair
-              </NavLink>
+              </a>
             </li>
           </SettingOptions>
         </ul>

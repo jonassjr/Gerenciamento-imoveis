@@ -14,7 +14,7 @@ export const Content = styled(Dialog.Content)`
   width: 100%;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
-  padding: 2.5rem 3rem;
+  padding: 2.5rem 2rem;
 
   background-color: ${(props) => props.theme['gray-800']};
 
@@ -52,6 +52,7 @@ export const Content = styled(Dialog.Content)`
     bottom: initial;
     transform: translate(-50%, -50%);
     border-radius: 6px;
+    padding: 2.5rem 3rem;
   }
 `
 

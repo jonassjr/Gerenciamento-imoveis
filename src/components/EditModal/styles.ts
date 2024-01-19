@@ -14,7 +14,7 @@ export const Content = styled(Dialog.Content)`
   width: 100%;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
-  padding: 2.5rem 3rem;
+  padding: 2.5rem 2rem;
   background-color: ${(props) => props.theme['gray-800']};
 
   position: fixed;
@@ -81,6 +81,7 @@ export const Content = styled(Dialog.Content)`
     transform: translate(-50%, -50%);
     bottom: initial;
     border-radius: 6px;
+    padding: 2.5rem 3rem;
   }
 `
 
@@ -98,7 +99,7 @@ export const PropertyCategory = styled(RadioGroup.Root)`
 
 export const PropertyCategoryButton = styled(RadioGroup.Item)`
   background-color: ${(props) => props.theme['gray-600']};
-  padding: 0.75rem 0.65rem;
+  padding: 1rem;
   border: 0;
   border-radius: 3px;
   cursor: pointer;
@@ -117,7 +118,6 @@ export const PropertyCategoryButton = styled(RadioGroup.Item)`
   }
 
   @media screen and (min-width: 420px) {
-    padding: 1rem;
     font-size: 0.875rem;
   }
 `

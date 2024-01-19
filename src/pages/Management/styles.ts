@@ -92,12 +92,6 @@ export const ManagementTable = styled.table`
   font-size: 0.875rem;
 
   tr {
-    /* &:hover td {
-      background-color: ${(props) => props.theme['gray-100']};
-      color: ${(props) => props.theme['gray-500']};
-      transition: background-color ease-in-out 0.2s;
-    } */
-
     td {
       &:first-child {
         min-width: 10rem;
@@ -108,11 +102,6 @@ export const ManagementTable = styled.table`
       td {
         background-color: ${(props) => props.theme['gray-500']};
       }
-
-      /* &:hover td {
-        background-color: ${(props) => props.theme['gray-100']};
-        transition: background-color ease-in-out 0.2s;
-      } */
     }
   }
 
@@ -129,12 +118,6 @@ export const ManagementTable = styled.table`
       border-top-right-radius: 3px;
       border-bottom-right-radius: 3px;
     }
-
-    /* &:hover {
-      td {
-        background-color: ${(props) => props.theme['gray-100']};
-      }
-    } */
   }
 
   @media screen and (min-width: 1024px) {

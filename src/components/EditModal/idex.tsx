@@ -48,7 +48,7 @@ export function EditModal({ propertyToEdit, onClose }: EditModalProps) {
     control,
     handleSubmit,
     register,
-    formState: { isSubmitting, errors },
+    formState: { isSubmitting },
   } = useForm<NewPropertyFormInputs>({
     resolver: zodResolver(NewPropertyFormSchema),
     defaultValues: {
@@ -60,11 +60,7 @@ export function EditModal({ propertyToEdit, onClose }: EditModalProps) {
     },
   })
 
-  console.log(errors)
-
   async function handleEditProperty(data: NewPropertyFormInputs) {
-    console.log('função chamada')
-
     const { adress, type, price, category } = data
     const { id } = propertyToEdit
 

@@ -1,17 +1,17 @@
 import styled from 'styled-components'
 
 interface ToggleProps {
-  toggle: boolean
+  $toggle: boolean
 }
 
 export const MenuBar = styled.aside<ToggleProps>`
-  position: absolute;
+  position: fixed;
   top: 0;
-  left: ${(props) => (props.toggle === true ? '0' : '-100%')};
+  left: ${(props) => (props.$toggle ? '0' : '-100%')};
   bottom: 0;
   min-width: 15.6rem;
 
-  min-height: 100vh;
+  height: 100vh;
 
   background-color: ${(props) => props.theme['gray-600']};
 
@@ -24,9 +24,10 @@ export const MenuBar = styled.aside<ToggleProps>`
   transition: left 0.4s ease-in-out;
 
   @media screen and (min-width: 1120px) {
-    position: relative;
+    position: sticky;
     left: 0;
     box-shadow: none;
+    height: 100vh;
   }
 `
 
@@ -82,6 +83,7 @@ export const Navigation = styled.nav`
         border-left: 2px solid transparent;
         transition: background-color 0.3s;
         border-radius: 3px;
+        cursor: pointer;
 
         &.active {
           background-color: ${(props) => props.theme['gray-500']};
