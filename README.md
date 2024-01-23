@@ -29,5 +29,7 @@ Além disso, o projeto inclui uma página de dashboard simples, onde os usuário
 - [Radix UI](https://www.radix-ui.com/primitives) - Componentes primitivos para criar interfaces de usuário acessíveis.
 - [JSON Server](https://github.com/typicode/json-server) - Uma biblioteca para criar rapidamente uma API REST fake para testar e prototipar.
 - [React Chart.js 2](https://reactchartjs.github.io/react-chartjs-2/) - Biblioteca para criação de gráficos e visualizações de dados com React.
+- [React Hook Form](https://react-hook-form.com) - Biblioteca eficiente para formulários em React.
+- [Zod](https://zod.dev) - Uma biblioteca de validação de esquema TypeScript.
 
 
