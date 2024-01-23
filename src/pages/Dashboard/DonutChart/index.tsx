@@ -83,8 +83,6 @@ export function DonutChart() {
     },
   }
 
-  console.log(groupedData)
-
   return (
     <ArticleContainer>
       <ChartContainer>

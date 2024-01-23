@@ -2,10 +2,10 @@ import { useContext, useMemo } from 'react'
 import { PropertiesContext } from '../contexts/PropertiesContext'
 
 export function useSummary() {
-  const { properties } = useContext(PropertiesContext)
+  const { summaryData } = useContext(PropertiesContext)
 
   const summary = useMemo(() => {
-    return properties.reduce(
+    return summaryData.reduce(
       (acc, propertie) => {
         if (propertie.category === 'Alugado') {
           acc.alugado += propertie.price
@@ -23,7 +23,7 @@ export function useSummary() {
         total: 0,
       },
     )
-  }, [properties])
+  }, [summaryData])
 
   return summary
 }
