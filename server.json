@@ -1,32 +1,32 @@
 {
   "imoveis": [
     {
-      "adress": "Rua ABC, 123",
-      "type": "Casa",
-      "price": 696000,
-      "category": "Disponível",
-      "id": 1
-    },
-    {
       "adress": "Rua XYZ, 789",
       "type": "Terreno",
       "price": 640000,
-      "category": "Alugado",
+      "category": "Disponível",
       "id": 2
     },
     {
-      "adress": "Av. FGH, 456",
-      "type": "Apartamento",
+      "adress": "Rua FGH, 456",
+      "type": "Casa",
       "price": 420000,
       "category": "Vendido",
-      "id": 3
+      "id": 6
     },
     {
-      "id": 4,
-      "adress": "Rua. IJK, 069",
-      "type": "Terreno",
-      "price": 320000,
-      "category": "Vendido"
+      "adress": "Rua KLM, 976",
+      "type": "Casa",
+      "price": 400000,
+      "category": "Alugado",
+      "id": 7
+    },
+    {
+      "adress": "Rua GHY, 721",
+      "type": "Apartamento",
+      "price": 680000,
+      "category": "Vendido",
+      "id": 8
     }
   ]
 }

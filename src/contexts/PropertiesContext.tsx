@@ -24,6 +24,7 @@ interface CreatePropertyInput {
 
 interface PropertiesContextType {
   properties: Property[]
+  summaryData: Property[]
   fetchProperties: (query?: string) => Promise<void>
   createProperties: (data: CreatePropertyInput) => Promise<void>
   deleteProperties: (id: number) => Promise<void>
@@ -38,6 +39,7 @@ export const PropertiesContext = createContext({} as PropertiesContextType)
 
 export function PropertiesProvider({ children }: PropertiesProviderProps) {
   const [properties, setProperties] = useState<Property[]>([])
+  const [summaryData, setSummaryData] = useState<Property[]>([])
 
   // Read Properties
   const fetchProperties = useCallback(async (query?: string) => {
@@ -48,6 +50,10 @@ export function PropertiesProvider({ children }: PropertiesProviderProps) {
     })
 
     setProperties(response.data)
+
+    if (!query) {
+      setSummaryData(response.data)
+    }
   }, [])
 
   // Create Properties
@@ -64,11 +70,16 @@ export function PropertiesProvider({ children }: PropertiesProviderProps) {
   }, [])
 
   // Delete Properties
-  const deleteProperties = useCallback(async (id: number) => {
-    await api.delete(`imoveis/${id}`)
+  const deleteProperties = useCallback(
+    async (id: number) => {
+      await api.delete(`imoveis/${id}`)
 
-    setProperties((state) => state.filter((property) => property.id !== id))
-  }, [])
+      setProperties((state) => state.filter((property) => property.id !== id))
+
+      fetchProperties()
+    },
+    [fetchProperties],
+  )
 
   // Edit Properties
   const editProperties = useCallback(
@@ -95,6 +106,7 @@ export function PropertiesProvider({ children }: PropertiesProviderProps) {
     <PropertiesContext.Provider
       value={{
         properties,
+        summaryData,
         fetchProperties,
         createProperties,
         deleteProperties,
